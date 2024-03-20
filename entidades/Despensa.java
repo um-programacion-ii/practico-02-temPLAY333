@@ -36,6 +36,9 @@ public class Despensa {
     public String toString() {
         String desc = "En la despensa; ";
         for (Ingrediente ingre : this.despensa) {
+            if (ingre == null) {
+                break;
+            }
             desc += ingre + ", ";
         }
         return desc;
