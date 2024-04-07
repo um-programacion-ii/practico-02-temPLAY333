@@ -30,7 +30,7 @@ public class Ingrediente {
             setCantidad(this.cantidad-numero);
             System.out.println("Sacado Exitoso de " + this.nombre);
         } else {
-            System.out.println("No hay tal cantidad de " + this.nombre);
+            System.out.println("No hay tal " + numero + " de " + this.nombre);
         }
     }
 

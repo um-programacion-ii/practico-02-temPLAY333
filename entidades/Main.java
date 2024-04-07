@@ -3,10 +3,11 @@ package entidades;
 public class Main {
     static Ingrediente tomate = new Ingrediente("tomate",10);
     static Ingrediente zanahoria = new Ingrediente("zanahoria",5);
-    static Ingrediente huevo = new Ingrediente("huevo",6);
-    static Ingrediente agua = new Ingrediente("agua",100);
     static Despensa alacena = new Despensa(new Ingrediente[4]);
-    static HuevoDuro huevoDuroSimple = new HuevoDuro(600,new Ingrediente[] {huevo, agua},"Poner el huevo a hervir durante 10 minutos");
+    static HuevoDuro huevoDuroSimple = new HuevoDuro();
+    static Chef Ramsey = new Chef("Gordon Ramsey",5);
+    static Ingrediente huevo = new Ingrediente("huevo",4);
+    static Ingrediente agua = new Ingrediente("agua",400);
 
     public static void main(String[] args) {
         System.out.println(tomate.toString());
@@ -27,5 +28,12 @@ public class Main {
         System.out.println("--------------------------");
 
         System.out.println(huevoDuroSimple);
+        System.out.println("--------------------------");
+
+        System.out.println(Ramsey);
+        alacena.addIngrediente(huevo);
+        alacena.addIngrediente(agua);
+        Ramsey.verificarIngredientes(alacena, huevoDuroSimple);
+        Ramsey.cocinar(alacena,huevoDuroSimple);
     }
 }
