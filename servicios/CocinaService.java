@@ -3,35 +3,36 @@ package servicios;
 import entidades.Despensa;
 import entidades.Ingrediente;
 import entidades.Receta;
+import entidades.Utensilio;
+import excepciones.StockInsuficiente;
+import excepciones.VidaUtilInsifuciente;
+import interfaces.Cocinable;
+import interfaces.Despensable;
 
-public class CocinaService {
+import java.util.Map;
 
-    public String verficarIngredientes (Despensa despensa, Receta receta) {
-        for (Ingrediente ingredienteReceta : receta.getIngredientes()) {
-            boolean encontrado = false;
-            for (Ingrediente ingredienteDespensa : despensa.getDespensa()) {
-                if (ingredienteReceta.getNombre().equals(ingredienteDespensa.getNombre())) {
-                    if (ingredienteDespensa.getCantidad() >= ingredienteReceta.getCantidad()) {
-                        encontrado = true;
-                        break;
-                    } else {
-                        return "Falta " + (ingredienteReceta.getCantidad()-ingredienteDespensa.getCantidad()) + " de " +
-                        ingredienteReceta.getNombre();
-                    }
-                }
-            }
-            if (!encontrado) {
-                return "En la despensa no hay ninguno de los ingredientes necesarios";
-            }
+public class CocinaService implements Cocinable {
+
+    public void verficarIngredientes (Despensa despensa, Receta receta) {
+        DespensaService despi = new DespensaService();
+        try {
+            despi.verificarDespensa(despensa, receta);
+        } catch (VidaUtilInsifuciente | StockInsuficiente excep) {
+            System.out.println(excep);
         }
-        return "Ingredientes verificados con exito!!";
     }
 
     public void cocinar (Despensa despensa, Receta receta) {
         System.out.println(receta.getPreparacion());
-        for (Ingrediente ingredienteReceta : receta.getIngredientes()) {
-            despensa.getIngrediente(ingredienteReceta, ingredienteReceta.getCantidad());
-            System.out.println(ingredienteReceta);
+
+        for (Map.Entry<String, Despensable> entry : receta.getDespensables().entrySet()) {
+            Despensable despReceta = entry.getValue();
+            Despensable despDespensa = despensa.getDespensa().get(entry.getKey());
+
+           if (despReceta instanceof Ingrediente && despDespensa instanceof Ingrediente) {
+                Ingrediente ingredienteDespensa = (Ingrediente) despDespensa;
+                System.out.println("Queda " + ingredienteDespensa.getCantidad() + " de " + ingredienteDespensa.getNombre());
+            }
         }
     }
 }

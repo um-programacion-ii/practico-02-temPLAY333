@@ -1,8 +1,9 @@
 package entidades;
 
+import interfaces.Cocinable;
 import servicios.CocinaService;
 
-public class Chef {
+public class Chef implements Cocinable{
     private String nombre;
     private int estrellasMichelin;
 

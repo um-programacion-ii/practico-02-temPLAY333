@@ -3,7 +3,7 @@ package entidades;
 public class Main {
     static Ingrediente tomate = new Ingrediente("tomate",10);
     static Ingrediente zanahoria = new Ingrediente("zanahoria",5);
-    static Despensa alacena = new Despensa(new Ingrediente[4]);
+    static Despensa alacena = new Despensa();
     static HuevoDuro huevoDuroSimple = new HuevoDuro();
     static Chef Ramsey = new Chef("Gordon Ramsey",5);
     static Ingrediente huevo = new Ingrediente("huevo",4);
@@ -17,13 +17,13 @@ public class Main {
         zanahoria.sacar(3);
         System.out.println(zanahoria);
 
-        alacena.addIngrediente(tomate);
-        alacena.getIngrediente(tomate,3);
+        alacena.addDespensable(tomate);
+        alacena.getIngrediente("tomate",3);
         System.out.println(tomate);
 
-        alacena.addIngrediente(zanahoria);
-        alacena.getIngrediente(zanahoria,3);
-        alacena.getIngrediente(tomate,10);
+        alacena.addDespensable(zanahoria);
+        alacena.getIngrediente("zanahoria",3);
+        alacena.getIngrediente("tomate",10);
         System.out.println(alacena);
         System.out.println("--------------------------");
 
@@ -31,8 +31,8 @@ public class Main {
         System.out.println("--------------------------");
 
         System.out.println(Ramsey);
-        alacena.addIngrediente(huevo);
-        alacena.addIngrediente(agua);
+        alacena.addDespensable(huevo);
+        alacena.addDespensable(agua);
         Ramsey.verificarIngredientes(alacena, huevoDuroSimple);
         Ramsey.cocinar(alacena,huevoDuroSimple);
     }

@@ -1,13 +1,17 @@
 package entidades;
 
+import interfaces.Despensable;
+
+import java.util.Map;
+
 public class Receta {
     private int tiempoCoccion;
-    private Ingrediente[] ingredientes;
+    private Map<String, Despensable> despensables;
     private String preparacion;
 
-    public Receta(int tiempoCoccion, Ingrediente[] ingredientes, String preparacion) {
+    public Receta(int tiempoCoccion, Map<String, Despensable> despensables, String preparacion) {
         this.tiempoCoccion = tiempoCoccion;
-        this.ingredientes = ingredientes;
+        this.despensables = despensables;
         this.preparacion = preparacion;
     }
 
@@ -19,12 +23,12 @@ public class Receta {
         this.tiempoCoccion = tiempoCoccion;
     }
 
-    public Ingrediente[] getIngredientes() {
-        return ingredientes;
+    public Map<String, Despensable> getDespensables() {
+        return despensables;
     }
 
-    public void setIngredientes(Ingrediente[] ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setDespensable(Map<String, Despensable> despensables) {
+        this.despensables = despensables;
     }
 
     public String getPreparacion() {
