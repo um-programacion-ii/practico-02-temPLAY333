@@ -1,5 +1,7 @@
 package entidades;
 
+import entidades.recetas.HuevoDuro;
+
 public class Main {
     static Ingrediente tomate = new Ingrediente("tomate",10);
     static Ingrediente zanahoria = new Ingrediente("zanahoria",5);

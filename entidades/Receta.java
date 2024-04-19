@@ -15,6 +15,8 @@ public class Receta {
         this.preparacion = preparacion;
     }
 
+    public Receta(){};
+
     public int getTiempoCoccion() {
         return tiempoCoccion;
     }

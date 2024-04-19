@@ -30,7 +30,7 @@ public class Chef implements Cocinable{
 
     public void verificarIngredientes(Despensa despensa, Receta receta) {
         CocinaService service = new CocinaService();
-        System.out.println(service.verficarIngredientes(despensa,receta));
+        service.verficarIngredientes(despensa,receta);
     }
 
     public void cocinar(Despensa despensa, Receta receta) {
